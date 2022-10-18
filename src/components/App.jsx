@@ -5,17 +5,41 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
+  //функция на кнопку
+  handleFeedback = e => {
+    const vote = e.target.name;
+    console.log(vote);
+    this.setState(prevState => ({ [vote]: prevState[vote] + 1 }));
+  };
+  // const name = event.target.name;
+  // console.log(Object.keys(this.state.name));
+  // this.setState(prevState => {
+  //   return {
+  //     [name]: prevState[name] + 1,
+  //   };
+  // });
 
-  handleFeedback = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
+  //функция на общую сумму
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    // console.log(Object.values(this.state));
+    const totalFeedback = good + neutral + bad;
+    return totalFeedback;
+  };
+
+  // %
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const positivePercent = Math.round(
+      (good / this.countTotalFeedback()) * 100
+    );
+    return positivePercent;
   };
 
   render() {
-    // const { good } = this.state;
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const percent = this.countPositiveFeedbackPercentage();
     return (
       <>
         <section>
@@ -23,15 +47,23 @@ export class App extends Component {
           <button type="button" onClick={this.handleFeedback} name="good">
             Good
           </button>
-          <button type="button">neutral</button>
-          <button type="button">bad</button>
+          <button type="button" onClick={this.handleFeedback} name="neutral">
+            neutral
+          </button>
+          <button type="button" onClick={this.handleFeedback} name="bad">
+            bad
+          </button>
 
           <section>
             <h2>Statistics</h2>
 
-            <span>Good:{this.state.good}</span>
-            <span>Neutral:</span>
-            <span>Bad:</span>
+            <span>Good:{good}</span>
+            <span>Neutral:{neutral}</span>
+            <span>Bad:{bad}</span>
+          </section>
+          <section>
+            <p>Total:{total}</p>
+            <p>Positive feedback:{percent}%</p>
           </section>
         </section>
       </>

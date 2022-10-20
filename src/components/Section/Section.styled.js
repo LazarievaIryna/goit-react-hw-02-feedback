@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 export const SectionContainer = styled.div`
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 export const Title = styled.h2`
   font-size: 26px;

@@ -6,3 +6,7 @@ export const StatisticItem = styled.li`
     margin-bottom: 10px;
   }
 `;
+export const StatisticContainer = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`;

@@ -15,13 +15,6 @@ export class App extends Component {
     console.log(vote);
     this.setState(prevState => ({ [vote]: prevState[vote] + 1 }));
   };
-  // const name = event.target.name;
-  // console.log(Object.keys(this.state.name));
-  // this.setState(prevState => {
-  //   return {
-  //     [name]: prevState[name] + 1,
-  //   };
-  // });
 
   //функция на общую сумму
   countTotalFeedback = () => {
@@ -43,6 +36,7 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const options = Object.keys(this.state);
+    console.log(options);
     const total = this.countTotalFeedback();
     const percent = this.countPositiveFeedbackPercentage();
     return (

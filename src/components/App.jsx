@@ -12,7 +12,7 @@ export class App extends Component {
   //функция на кнопку
   handleFeedback = e => {
     const vote = e.target.name;
-    console.log(vote);
+    // console.log(vote);
     this.setState(prevState => ({ [vote]: prevState[vote] + 1 }));
   };
 
@@ -36,7 +36,7 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const options = Object.keys(this.state);
-    console.log(options);
+    // console.log(options);
     const total = this.countTotalFeedback();
     const percent = this.countPositiveFeedbackPercentage();
     return (

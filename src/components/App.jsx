@@ -19,7 +19,7 @@ export class App extends Component {
   //функция на общую сумму
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
-    // console.log(Object.values(this.state));
+ 
     const totalFeedback = good + neutral + bad;
     return totalFeedback;
   };
@@ -36,7 +36,8 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const options = Object.keys(this.state);
-    // console.log(options);
+    // console.log(options)
+
     const total = this.countTotalFeedback();
     const percent = this.countPositiveFeedbackPercentage();
     return (
